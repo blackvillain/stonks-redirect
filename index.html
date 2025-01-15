@@ -6,11 +6,8 @@
     <title>Redirecting to Steam...</title>
     <script type="text/javascript">
         window.onload = function() {
-            // Get the query parameters from the URL
-            var params = new URLSearchParams(window.location.search);
-            
             // Get the server address (the first query parameter)
-            var serverAddress = params.get('');
+            var serverAddress = window.location.hash.substring(1);
 
             // If a server address is provided, redirect to the steam://connect URL
             if (serverAddress) {
