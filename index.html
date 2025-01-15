@@ -6,16 +6,19 @@
     <title>Redirecting to Steam...</title>
     <script type="text/javascript">
         window.onload = function() {
-            // Get the path from the URL, removing the leading slash
-            var path = window.location.pathname.replace('/', '');
+            // Get the query parameters from the URL
+            var params = new URLSearchParams(window.location.search);
             
-            // If there's a path, redirect to the steam://connect URL
-            if (path) {
-                var steamURL = "steam://connect/" + path;
+            // Get the server address (the first query parameter)
+            var serverAddress = params.get('');
+
+            // If a server address is provided, redirect to the steam://connect URL
+            if (serverAddress) {
+                var steamURL = "steam://connect/" + serverAddress;
                 window.location.href = steamURL;
             } else {
-                // If no path exists, show an error or fallback
-                document.body.innerHTML = "<p>No server address provided in the URL. Please add a valid server IP after the '/'</p>";
+                // If no address is provided, show an error or fallback message
+                document.body.innerHTML = "<p>No server address provided in the URL. Please add a valid server address after the '?' in the URL (e.g., ?127.0.0.1)</p>";
             }
         };
     </script>
