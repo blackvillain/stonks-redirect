@@ -7,7 +7,7 @@
     <script type="text/javascript">
         window.onload = function() {
             // Get the server address (the first query parameter)
-            var serverAddress = window.location.hash.substring(1);
+            var serverAddress = window.location.search.substring(1);
 
             // If a server address is provided, redirect to the steam://connect URL
             if (serverAddress) {
