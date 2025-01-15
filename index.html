@@ -5,13 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redirecting to Steam...</title>
     <script type="text/javascript">
-        // Wait for the document to fully load and then redirect to Steam
         window.onload = function() {
-            window.location.href = "steam://connect/127.0.0.1";
+            // Get the path from the URL, removing the leading slash
+            var path = window.location.pathname.replace('/', '');
+            
+            // If there's a path, redirect to the steam://connect URL
+            if (path) {
+                var steamURL = "steam://connect/" + path;
+                window.location.href = steamURL;
+            } else {
+                // If no path exists, show an error or fallback
+                document.body.innerHTML = "<p>No server address provided in the URL. Please add a valid server IP after the '/'</p>";
+            }
         };
     </script>
 </head>
 <body>
-    <p>If you are not redirected, <a href="steam://connect/127.0.0.1">click here</a>.</p>
+    <p>If you are not redirected, <a href="" id="manualLink">click here</a>.</p>
 </body>
 </html>
